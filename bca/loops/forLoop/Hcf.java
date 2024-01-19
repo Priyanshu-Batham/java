@@ -1,3 +1,4 @@
+//program to find HCF of two numbers using Eucledian's algorithm
 import java.io.*;
 class Hcf{
 	public static void main(String args[]) throws IOException {
