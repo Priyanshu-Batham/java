@@ -79,14 +79,26 @@ class MyDataStructure{
   }
 
   static void findSubSets(){
-    for(int i = 0; i<n; i++){
-      for(int j = i; j<n; j++){
-        System.out.print("[");
-        for(int k = i; k <= j; k++){
-          System.out.print(arr[k]+" ");
-        }
-        System.out.println("]");
-      }
-    }
+     for(int i = 0; i<(1<<n); i++){
+       int num = i;
+       int index = 0;
+     
+       System.out.print("{");
+       while(num != 0){
+         if((num & 1) == 1) System.out.print(arr[index]+" ");
+         index++;
+	 num = num>>1;
+       }
+       System.out.println("}");
+     }
   }
+
+
+
+
+
+
+
+
+
 }
