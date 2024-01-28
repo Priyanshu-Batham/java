@@ -1,11 +1,11 @@
 import java.io.*;
 
 class MyDataStructure{
-  static int n;
-  static int arr[];
-  static  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
   public static void main(String args[]) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n;
+    int arr[];
+
     System.out.print("How many Numbers to enter: ");
     n = Integer.parseInt(br.readLine());
     arr = new int[n];
@@ -17,6 +17,7 @@ class MyDataStructure{
 
     int choice;
     do{
+      n = arr.length;
       System.out.println("");
       System.out.println("1: Insert");
       System.out.println("2: Delete");
@@ -26,9 +27,9 @@ class MyDataStructure{
       choice = Integer.parseInt(br.readLine());
 
       switch(choice){
-      case 1 -> insert();
-      case 2 -> delete();
-      case 3 -> findSubSets();
+      case 1 -> arr = insert(arr, n);
+      case 2 -> arr = delete(arr, n);
+      case 3 -> findSubSets(arr, n);
       }
 
     }while(choice != 4);
@@ -36,16 +37,17 @@ class MyDataStructure{
     
   }
 
-  static void display(){
+  static void display(int arr[], int n){
     for(int i = 0; i<n; i++) System.out.print(arr[i]+" ");
   }
 
-  static void insert() throws IOException {
+  static int[] insert(int arr[], int n) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     System.out.print("Enter the number to insert: ");
     int num = Integer.parseInt(br.readLine());
     System.out.print("Enter the position(index): ");    
     int pos = Integer.parseInt(br.readLine());
-    if(pos > n) return;
+    if(pos > n) return arr;
 
     n++;
     int newArr[] = new int[n];
@@ -58,13 +60,15 @@ class MyDataStructure{
     }
 
     arr = newArr;
-    display();
+    display(arr, n);
+    return arr;
   }
 
-  static void delete() throws IOException {
+  static int[] delete(int arr[], int n) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     System.out.print("Enter the position(index): ");    
     int pos = Integer.parseInt(br.readLine());
-    if(pos >= n) return;
+    if(pos >= n) return arr;
 
     n--;
     int newArr[] = new int[n];
@@ -75,10 +79,11 @@ class MyDataStructure{
     }
 
     arr = newArr;
-    display();
+    display(arr, n);
+    return arr;
   }
 
-  static void findSubSets(){
+  static void findSubSets(int []arr, int n){
      for(int i = 0; i<(1<<n); i++){
        int num = i;
        int index = 0;
