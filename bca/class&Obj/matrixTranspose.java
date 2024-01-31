@@ -2,12 +2,12 @@ import java.util.*;
 
 class matrixTranspose{
     public static void main(String args[]){
-        Transpose mat1 = new Transpose();
+        Transpose mat1 = new Transpose(3, 3);
         Transpose mat2 = new Transpose(3, 3);
 
-        mat2.input();
-        mat1.rotate(mat2);
-        mat1.display();
+        mat1.input();
+        mat2.rotate(mat1);
+        mat2.display();
     }
 }
 
@@ -44,7 +44,6 @@ class Transpose{
             for(int j = 0; j<mat.n; j++){
                 a[i][j] = mat.a[j][i];
             }
-            System.out.print("Transposing...");
         }
     }
 
